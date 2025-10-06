@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "cv-creator-app",
+    "slug": "cv-creator-app",
+    "scheme": "cvcreatorapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "light",
+    "splash" : {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns":[
+      "**/*"
+    ],
+    "ios":{
+      "supportsTable":true
+    },
+    "android":{
+      "adaptativeIcon":{
+        "foregroundImage":"./assets/adaptative-icon.png",
+          "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

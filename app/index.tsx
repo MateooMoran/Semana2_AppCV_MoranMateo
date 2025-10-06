@@ -63,7 +63,7 @@ export default function HomeScreen() {
 
       <View style={{ marginTop: 30 }}>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: "#2ecc71" }]}
+          style={[styles.button, { backgroundColor: "#3d87dbff" }]}
           onPress={() => router.push("/preview")}
         >
           <Text style={styles.buttonText}>Ver Vista Previa del CV</Text>
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
     color: "#2c3e50",
+    textAlign:"center"
   },
   section: {
     backgroundColor: "#fff",
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   button: {
-    backgroundColor: "#3498db",
+    backgroundColor: "#616060ff",
     padding: 16,
     borderRadius: 8,
   },

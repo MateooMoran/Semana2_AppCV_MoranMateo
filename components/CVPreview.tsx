@@ -19,13 +19,13 @@ export const CVPreview: React.FC<CVPreviewProps> = ({ cvData }) => {
           </Text>
           <View style={styles.contactInfo}>
             {personalInfo.email && (
-              <Text style={styles.contactText}>📧 {personalInfo.email}</Text>
+              <Text style={styles.contactText}>📧:  {personalInfo.email}</Text>
             )}
             {personalInfo.phone && (
-              <Text style={styles.contactText}>📱 {personalInfo.phone}</Text>
+              <Text style={styles.contactText}>📱:  {personalInfo.phone}</Text>
             )}
             {personalInfo.location && (
-              <Text style={styles.contactText}>📍 {personalInfo.location}</Text>
+              <Text style={styles.contactText}>📍:  {personalInfo.location}</Text>
             )}
           </View>
         </View>
@@ -95,77 +95,93 @@ export const CVPreview: React.FC<CVPreviewProps> = ({ cvData }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f9f9f9", 
   },
   content: {
-    padding: 20,
+    padding: 12,
   },
   header: {
-    borderBottomWidth: 2,
-    borderBottomColor: "#3498db",
-    paddingBottom: 16,
-    marginBottom: 24,
+    backgroundColor: "#f5f5f5", 
+    padding: 20,
+    borderRadius: 12,
+    marginBottom: 32,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 2,
   },
   name: {
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: "bold",
     color: "#2c3e50",
-    marginBottom: 12,
+    textAlign: "center",
+    marginBottom: 8,
   },
   contactInfo: {
-    gap: 4,
+    alignItems: "center",
+    marginTop: 8,
   },
   contactText: {
     fontSize: 14,
-    color: "#7f8c8d",
-    marginBottom: 4,
+    color: "#555",
+    marginVertical: 2,
   },
   section: {
-    marginBottom: 24,
+    marginBottom: 28,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#3498db",
-    marginBottom: 12,
-    letterSpacing: 1,
+    fontWeight: "700",
+    color: "#2980b9",
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#dfe6e9",
+    paddingBottom: 6,
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
   },
   summaryText: {
-    fontSize: 14,
+    fontSize: 15,
     color: "#34495e",
-    lineHeight: 20,
+    lineHeight: 22,
   },
   item: {
+    backgroundColor: "#fff",
+    padding: 16,
+    borderRadius: 10,
     marginBottom: 16,
-    paddingBottom: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ecf0f1",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
   },
   itemTitle: {
     fontSize: 16,
     fontWeight: "600",
     color: "#2c3e50",
-    marginBottom: 4,
+    marginBottom: 2,
   },
   itemSubtitle: {
     fontSize: 14,
     color: "#7f8c8d",
-    marginBottom: 4,
+    marginBottom: 2,
   },
   itemInstitution: {
     fontSize: 14,
-    color: "#95a5a6",
-    marginBottom: 4,
+    color: "#7f8c8d",
+    marginBottom: 2,
   },
   itemDate: {
     fontSize: 12,
     color: "#95a5a6",
     fontStyle: "italic",
-    marginBottom: 8,
+    marginBottom: 6,
   },
   itemDescription: {
     fontSize: 13,
-    color: "#34495e",
+    color: "#2f3640",
     lineHeight: 18,
   },
   emptyState: {
@@ -181,5 +197,6 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
 });
+
 
 

@@ -32,11 +32,30 @@ export default function EducationScreen() {
   });
 
   const handleAdd = () => {
+    const onlyLettersRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+
     if (!formData.institution || !formData.degree) {
       Alert.alert("Error", "Por favor completa al menos institución y título");
       return;
     }
 
+
+    if (!onlyLettersRegex.test(formData.institution.trim())) {
+      Alert.alert("El campo 'Institucion' solo debe contener letras.");
+      return;
+    }
+
+
+    if (!onlyLettersRegex.test(formData.degree.trim())) {
+      Alert.alert("El campo 'Titulo/Grado' solo debe contener letras.");
+      return;
+    }
+
+
+    if (!onlyLettersRegex.test(formData.field.trim())) {
+      Alert.alert("El campo 'Area de estudio' solo debe contener letras.");
+      return;
+    }
     const newEducation: Education = {
       id: Date.now().toString(),
       ...formData,
@@ -228,18 +247,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-   label: {
-        fontSize: 14,
-        fontWeight: '500',
-        marginBottom: 6,
-        color: '#34495e',
-    },
-    dateInput: {
-        backgroundColor: '#fff',
-        padding: 12,
-        borderRadius: 6,
-        borderColor: '#ccc',
-        borderWidth: 1,
-        marginBottom: 16,
-    },
+  label: {
+    fontSize: 14,
+    fontWeight: '500',
+    marginBottom: 6,
+    color: '#34495e',
+  },
+  dateInput: {
+    backgroundColor: '#fff',
+    padding: 12,
+    borderRadius: 6,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginBottom: 16,
+  },
 });

@@ -41,12 +41,12 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   primary: {
-    backgroundColor: '#3498db',
+    backgroundColor: '#3d87dbff',
   },
   secondary: {
     backgroundColor: 'transparent',
     borderWidth: 2,
-    borderColor: '#3498db',
+    borderColor: '#dc2e3dff',
   },
   danger: {
     backgroundColor: '#e74c3c',
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   textSecondary: {
-    color: '#3498db',
+    color: '#e74c3c',
   },
 });

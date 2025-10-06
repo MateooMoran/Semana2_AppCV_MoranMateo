@@ -7,25 +7,31 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
-    "splash" : {
+    "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns":[
+    "assetBundlePatterns": [
       "**/*"
     ],
-    "ios":{
-      "supportsTable":true
+    "ios": {
+      "supportsTable": true
     },
-    "android":{
-      "adaptativeIcon":{
-        "foregroundImage":"./assets/adaptative-icon.png",
-          "backgroundColor": "#ffffff"
-      }
+    "android": {
+      "adaptativeIcon": {
+        "foregroundImage": "./assets/adaptative-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.mateomora.cvcreatorapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e63d9757-e904-4898-b8aa-5fe4a98ecfac"
+      }
     }
   }
 }

@@ -33,6 +33,9 @@ export default function ExperienceScreen() {
     });
 
     const handleAdd = () => {
+
+        const onlyLettersRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+
         if (!formData.company || !formData.position || !formData.startDate) {
             Alert.alert(
                 "Error",
@@ -40,6 +43,28 @@ export default function ExperienceScreen() {
             );
             return;
         }
+
+        if (!onlyLettersRegex.test(formData.company.trim())) {
+            Alert.alert("El campo 'Empresa' solo debe contener letras.");
+            return;
+        }
+
+        if (formData.position.trim().length > 30) {
+            Alert.alert("Campo inválido", "El campo 'Cargo' no puede tener más de 30 caracteres.");
+            return;
+        }
+
+
+        if (!onlyLettersRegex.test(formData.position.trim())) {
+            Alert.alert("El campo 'Cargo' solo debe contener letras.");
+            return;
+        }
+
+        if (formData.position.trim().length > 30) {
+            Alert.alert("Campo inválido", "El campo 'Cargo' no puede tener más de 30 caracteres.");
+            return;
+        }
+
 
         const newExperience: Experience = {
             id: Date.now().toString(),
@@ -98,6 +123,7 @@ export default function ExperienceScreen() {
                     placeholder="Nombre de la empresa"
                     value={formData.company}
                     onChangeText={(text) => setFormData({ ...formData, company: text })}
+                    maxLength={30}
                 />
 
                 <InputField
@@ -105,6 +131,7 @@ export default function ExperienceScreen() {
                     placeholder="Tu posición"
                     value={formData.position}
                     onChangeText={(text) => setFormData({ ...formData, position: text })}
+                    maxLength={30}
                 />
 
                 {/* Fecha de inicio */}
@@ -256,7 +283,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '500',
         marginBottom: 6,
-        color: '#34495e',
+        color: '#2c3e50',
     },
     dateInput: {
         backgroundColor: '#fff',

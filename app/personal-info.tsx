@@ -17,10 +17,22 @@ export default function PersonalInfoScreen() {
   }, [cvData.personalInfo]);
 
   const handleSave = () => {
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9+\s()-]{7,20}$/;
+
     if (!formData.fullName || !formData.email) {
       Alert.alert('Error', 'Por favor, complete los campos obligatorios.');
       return;
     }
+     if (!emailRegex.test(formData.email.trim())) {
+    Alert.alert('Error', 'El formato del email no es válido.');
+    return;
+  }
+   if (formData.phone && !phoneRegex.test(formData.phone.trim())) {
+    Alert.alert('Error', 'El número de teléfono no es válido.');
+    return;
+  }
 
     updatePersonalInfo(formData);
     Alert.alert('Éxito', 'Información personal guardada.', [

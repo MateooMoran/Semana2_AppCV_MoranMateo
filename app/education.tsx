@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { Platform } from 'react-native';
+
 import {
   View,
   Text,
@@ -16,6 +20,9 @@ import { Education } from "../types/cv.types";
 export default function EducationScreen() {
   const router = useRouter();
   const { cvData, addEducation, deleteEducation } = useCVContext();
+
+  const [showStartPicker, setShowStartPicker] = useState(false);
+  const [showEndPicker, setShowEndPicker] = useState(false);
 
   const [formData, setFormData] = useState<Omit<Education, "id">>({
     institution: "",
@@ -59,6 +66,21 @@ export default function EducationScreen() {
     ]);
   };
 
+  const handleDateChange = (event: any, selectedDate: Date | undefined, field: 'startDate' | 'endDate') => {
+    if (selectedDate) {
+      const formattedDate = selectedDate.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+      });
+
+      setFormData({ ...formData, [field]: formattedDate });
+    }
+
+    if (Platform.OS === 'android') {
+      if (field === 'startDate') setShowStartPicker(false);
+      else setShowEndPicker(false);
+    }
+  };
   return (
     <ScrollView style={styles.container}>
       <View style={styles.content}>
@@ -87,16 +109,21 @@ export default function EducationScreen() {
           onChangeText={(text) => setFormData({ ...formData, field: text })}
         />
 
-        <InputField
-          label="Año de Graduación"
-          placeholder="Ej: 2023"
-          value={formData.graduationYear}
-          onChangeText={(text) =>
-            setFormData({ ...formData, graduationYear: text })
-          }
-          keyboardType="numeric"
-        />
-
+        {/* Fecha de inicio */}
+        <Text style={styles.label}>Año de Graduacion *</Text>
+        <TouchableOpacity onPress={() => setShowStartPicker(true)} style={styles.dateInput}>
+          <Text style={{ color: formData.graduationYear ? "#000" : "#999" }}>
+            {formData.graduationYear || "Selecciona su fecha de graduacion"}
+          </Text>
+        </TouchableOpacity>
+        {showStartPicker && (
+          <DateTimePicker
+            value={new Date()}
+            mode="date"
+            display="default"
+            onChange={(event, date) => handleDateChange(event, date, 'startDate')}
+          />
+        )}
         <NavigationButton title="Agregar Educación" onPress={handleAdd} />
 
         {cvData.education.length > 0 && (
@@ -201,4 +228,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+   label: {
+        fontSize: 14,
+        fontWeight: '500',
+        marginBottom: 6,
+        color: '#34495e',
+    },
+    dateInput: {
+        backgroundColor: '#fff',
+        padding: 12,
+        borderRadius: 6,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        marginBottom: 16,
+    },
 });
